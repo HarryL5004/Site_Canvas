@@ -5,6 +5,8 @@ const myP5 = (s) => {
   let rose1Canvas: p5.Graphics, 
       rose2Canvas: p5.Graphics, 
       rose3Canvas: p5.Graphics; // 4/2, 5/3, 7/3
+  let slider: p5.Element;
+  let sliderPos: p5.Vector;
   
   class Rose {
     pos: p5.Vector;
@@ -86,10 +88,15 @@ const myP5 = (s) => {
     rose1Canvas = drawRose(4, 2, '#ba2d65', '#ffcdd2');
     rose2Canvas = drawRose(5, 3, '#e53935', '#fae');
     rose3Canvas = drawRose(7, 3, '#fae', '#fff176');
+    slider = s.createSlider(0, 500, 20, 1);
+    slider.size(s.AUTO);
+    let {width} = slider.size() as {width: number, height: number};
+    sliderPos = s.createVector(s.width-width-10, s.height-20);
+    slider.position(sliderPos.x, sliderPos.y);
   }
   
   s.draw = () => {
-    if (roses.length < 20)
+    if (roses.length < slider.value())
       randRose();
     s.resizeCanvas(s.windowWidth, s.windowHeight);
     setBgColor();
@@ -97,9 +104,13 @@ const myP5 = (s) => {
     for (let rose of roses) {
       rose.update();
       rose.render();
-      if (rose.pos.y >= s.height || rose.pos.x >= s.width)
+      if (rose.pos.y >= s.height || rose.pos.x >= s.width || roses.length > slider.value())
         roses.splice(roses.indexOf(rose), 1);
     }
+    s.fill("#ff6e40");
+    s.textStyle(s.BOLD);
+    s.textSize(20);
+    s.text(slider.value(), sliderPos.x-35, sliderPos.y+15);
   }
 }
 
