@@ -67,9 +67,9 @@ const myP5 = (s) => {
     let randNum = s.randomGaussian(0.5);
     if (randNum <= 0.33)
       roses.push(new Rose(rose1Canvas))
-    if (randNum <= 0.66)
+    else if (randNum <= 0.66)
       roses.push(new Rose(rose2Canvas))
-    if (randNum > 0.66)
+    else
       roses.push(new Rose(rose3Canvas))
   }  
     
@@ -104,7 +104,7 @@ const myP5 = (s) => {
     for (let rose of roses) {
       rose.update();
       rose.render();
-      if (rose.pos.y >= s.height || rose.pos.x >= s.width || roses.length > slider.value())
+      if (rose.pos.y > s.height || rose.pos.x > s.width || roses.length > slider.value())
         roses.splice(roses.indexOf(rose), 1);
     }
     s.fill("#ff6e40");
