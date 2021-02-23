@@ -1,14 +1,14 @@
 {
-  "name": "p5-typescript",
+  "name": "rosy_canvas",
   "version": "1.0.0",
-  "description": "Writing p5 in typescript",
+  "description": "A p5 canvas with falling roses on top of splashes of blues",
   "main": "index.js",
   "private": true,
   "scripts": {
     "build": "npx webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "Harry Leung",
   "license": "ISC",
   "dependencies": {
     "@types/p5": "^0.9.1",
