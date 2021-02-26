@@ -1,4 +1,4 @@
-Source code of the p5 canvas on my website
+A p5 canvas with falling roses as displayed in my website
 ======================================
 Take a look at the canvas using:
 -------------------
