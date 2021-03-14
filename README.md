@@ -1,4 +1,4 @@
-A p5 canvas with falling roses as displayed in my website
+A p5 canvas with falling roses as displayed on my website
 ======================================
 Take a look at the canvas using:
 -------------------
