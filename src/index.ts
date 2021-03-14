@@ -82,7 +82,6 @@ const myP5 = (s) => {
   s.setup = () => {
     document.body.style.overflow = "hidden"; // get rid of scrollbars
     s.createCanvas(s.windowWidth, s.windowHeight);
-    s.frameRate(60);
     s.background('#e3f2fd');
 
     rose1Canvas = drawRose(4, 2, '#ba2d65', '#ffcdd2');
@@ -104,7 +103,8 @@ const myP5 = (s) => {
     for (let rose of roses) {
       rose.update();
       rose.render();
-      if (rose.pos.y > s.height || rose.pos.x > s.width || roses.length > slider.value())
+      // 20: rose's radius
+      if (rose.pos.y > s.height+20 || rose.pos.x > s.width+20 || roses.length > slider.value())
         roses.splice(roses.indexOf(rose), 1);
     }
     s.fill("#ff6e40");
