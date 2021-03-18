@@ -7,6 +7,7 @@ const myP5 = (s) => {
       rose3Canvas: p5.Graphics; // 4/2, 5/3, 7/3
   let slider: p5.Element;
   let sliderPos: p5.Vector;
+  let windowDim: p5.Vector;
   
   class Rose {
     pos: p5.Vector;
@@ -82,6 +83,7 @@ const myP5 = (s) => {
   s.setup = () => {
     document.body.style.overflow = "hidden"; // get rid of scrollbars
     s.createCanvas(s.windowWidth, s.windowHeight);
+    windowDim = s.createVector(s.windowWidth, s.windowHeight);
     s.background('#e3f2fd');
 
     rose1Canvas = drawRose(4, 2, '#ba2d65', '#ffcdd2');
@@ -97,7 +99,10 @@ const myP5 = (s) => {
   s.draw = () => {
     if (roses.length < slider.value())
       randRose();
-    s.resizeCanvas(s.windowWidth, s.windowHeight);
+    if (windowDim.x !== s.windowWidth || windowDim.y !== s.windowHeight) {
+      s.resizeCanvas(s.windowWidth, s.windowHeight);
+      windowDim = s.createVector(s.windowWidth, s.windowHeight);
+    }
     setBgColor();
   
     for (let rose of roses) {
